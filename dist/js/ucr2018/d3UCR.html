@@ -1,0 +1,150 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+
+    <style>
+        .bar, .rate-bar { 
+            fill: steelblue;
+            stroke: white;
+            stroke-width: 1px; 
+            }
+        .wa-bar {
+            fill: teal;
+            stroke: white;
+            stroke-width: 1px;
+        }
+        .us-bar {
+            fill: #cf181c;
+            stroke: white;
+            stroke-width:1px;
+        }
+    .x-axis path, .x-rate-axis path {
+            display: none;
+        }
+            .axis {
+            font-family: Futura, sans-serif;
+            font-size: 11px;
+            
+            shape-rendering: crispEdges;
+        }
+        h4 span {
+         font-size: 10px;
+        margin-top: -5px;    
+        }    
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    
+    </head>
+    <body>
+    <script src="https://yakimaherald.com/app/ucr2018/wa.js"></script>
+    <script src="https://yakimaherald.com/app/ucr2018/us.js"></script>
+
+
+
+    <div class="container">
+            <div class="row">
+            <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1">
+                <p>We used the latest crime rate data from the FBI to illustrate how much crime happens in every part of the Yakima Valley.</p>
+                <p>First, select a Yakima County law enforcement agency from the left drop down menu.  Then select a type of crime or crimes from the right drop down menu to see how your town compares to the state and nation as a whole.</p>
+            </div>
+            </div>
+                <div class="row">
+                    <div class="col-sm-4 col-sm-offset-2">
+                
+                        <form>
+                                <label for="department-select">Select a department</label>
+                                <select id="department-select" class="form-control">
+                                    <option value="WA0390000">Yakima County Sheriff's Office</option>
+                                    <option value="WA0390100">Grandview Police Department</option>
+                                    <option value="WA0390200">Sunnyside Police Department</option>
+                                    <option value="WA0390300">Toppenish Police Department</option>
+                                    <option value="WA0390400">Union Gap Police Department</option>
+                                    <option selected value="WA0390500">Yakima Police Department</option>
+                                    <option value="WA0390600">Zillah Police Department</option>
+                                    <option value="WA0390700">Granger Police Department</option>
+                                    <option value="WA0390900">Mabton Police Department</option>
+                                    <option value="WA0391100">Selah Police Department</option>
+                                    <option value="WA0391300">Wapato Police Department</option>
+                                    <option value="WA0391400">Moxee Police Department</option>
+                                </select>
+                        </form>
+                    </div>
+                    <div class="col-sm-4">
+                        <form>   
+                                <label for="crime-select">Select a crime type</label>
+                                <select id="crime-select" class="form-control">
+                                    <optgroup label="Violent Crimes">
+                                        <option selected value="violent">All Violent Crimes</option>
+                                        <option value="homicide">Homicide</option>
+                                        <option value="rape">Rape</option>
+                                        <option value="robbery">Robbery</option>
+                                        <option value="agassault">Aggravated Assault</option>
+                                    </optgroup>
+                                    <optgroup label="Property Crime">
+                                        <option value="property">All Property Crimes</option>
+                                        <option value="burglary">Burglary</option>
+                                        <option value="larceny">Larceny</option>
+                                        <option value="gta">Vehicle Theft</option>
+                                    </optgroup>
+                                </select>
+                        </form>
+                    </div>
+                            
+
+                </div>
+        <!--end row-->
+                <hr>
+                <div class="row">
+                    <div class="col-md-4 col-md-offset-2" id="crimeWrap">
+                        <h4>Crimes reported</h4>
+                        <svg id="crimeSVG" width="100%" height="250px"></svg>
+                    </div>
+                    <div class="col-md-4" id="rateWrap">
+                        <h4>Crime rate per 100,000 people</h4>
+                        <svg id="rateSVG" width="100%" height="250px"></svg>
+                    </div>       
+                </div>
+                <div class="row">
+                    <div class="col-md-4 col-md-offset-2" id="wa_wrap">
+                        <h4>Washington State Rate</h4>
+                        <svg id="waSVG" width="100%" height="250px"></svg>
+                    </div>
+                    <div class="col-md-4" id="us_wrap">
+                            <h4>United States Rate</h4>
+                            <svg id="usSVG" width="100%" height="250px"></svg>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6-md col-md-offset-3">
+                        <p class="small" style="text-align:center;">Reported crimes per 100,000 people Source: FBI Uniform Crime Reports</p>
+                    </div>
+                </div>
+
+
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1">
+        <p>
+        Crime rates are reported as the number of incidents known of by law enforcement per 100,000 people living in the jurisdiction.  Crime rate reporting is the responsibility of individual departments, with state agencies collating the data before forwarding it to the FBI for final analysis.
+        </p>
+        </div>
+    </div>
+<!--end row-->
+</div>
+<!--end container-->
+        
+    <script src="https://yakimaherald.com/app/ucr2018/d3/d3.js"></script>
+    <script src="https://yakimaherald.com/app/ucr2018/app.js"></script>
+
+</body>
+
+
+</html>
