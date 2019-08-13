@@ -78,10 +78,23 @@ p.lead {
 
 .dev-icons {
   font-size: 3rem;
+  color: #2f6ebc;
 }
 
 .dev-icons .list-inline-item i:hover {
   color: #BD5D38;
+}
+
+ul.fa-ul li.dev-icons span {
+  color: rgb(134, 142, 150);
+  font-size: 1.5rem;
+  vertical-align: middle;
+}
+
+span.skill {
+  font-size: 1.4rem;
+  vertical-align:middle;
+  color:#2f6ebc;
 }
 
 #sideNav .navbar-nav .nav-item .nav-link {
